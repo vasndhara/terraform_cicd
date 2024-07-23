@@ -1,0 +1,40 @@
+pipeline{
+    agent any
+    stages{
+        stage('Git checkout'){
+            steps{
+                "your's git repo URL"
+            }
+        }    
+        stage('Terraform init'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+
+        stage('Terraform Format') {
+            steps {
+                    sh 'terraform fmt -check'
+                }
+            }
+
+        stage('Terraform Validate') {
+            steps {
+            
+                    sh 'terraform validate'
+                   }
+            }
+
+
+        stage('Terraform plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }           
+        stage('Terraform apply'){
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
+        }
+    }
+}
