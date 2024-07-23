@@ -10,3 +10,4 @@ output "private_subnet_id" {
 } 
 output "route_table_id" { 
  value = aws_route_table.PublicRT.i
+}
